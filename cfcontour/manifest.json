@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "CF Contour",
+  "version": "0.1.0",
+  "description": "Live chart of the average score by rating on Codeforces standings pages.",
+  "icons": {
+    "48": "icons/icon.svg",
+    "96": "icons/icon.svg",
+    "128": "icons/icon.svg"
+  },
+  "host_permissions": [
+    "*://*.codeforces.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*.codeforces.com/*"],
+      "js": [
+        "src/util/constants.js",
+        "src/util/util.js",
+        "src/util/rank-colors.js",
+        "src/api/api.js",
+        "src/api/standings-page.js",
+        "src/api/ratings.js",
+        "src/chart/compute.js",
+        "src/chart/chart.js",
+        "src/chart/panel.js",
+        "src/content/content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "cfcontour@example.com"
+    }
+  }
+}
